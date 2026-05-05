@@ -1,0 +1,5 @@
+[1m[31mERROR   [0m pages.search_result_page:search_result_page.py:54 product select is failed or product not found
+Traceback (most recent call last):
+  File "C:\Users\vaibh\PycharmProjects\basicknowledge\Project_With_Framework\pages\search_result_page.py", line 52, in click_product
+    raise Exception(f"{product_name} not found on SRP page")
+Exception: iPod Nano not found on SRP page

@@ -1,0 +1,23 @@
+🎯 Starting browser: chromium
+🎯 Headless mode: False (headed=True)
+🌐 Navigating to: http://localhost/opencart
+📹 Tracing enabled - capturing screenshots and actions
+the total count of product on srp page are: 4
+product name available on srp page are: iPod Classic
+product name available on srp page are: iPod Nano
+product name available on srp page are: iPod Shuffle
+product name available on srp page are: iPod Touch
+search button failed Locator.click: Error: strict mode violation: locator("button[class='btn btn-light btn-lg']") resolved to 3 elements:
+    1) <button type="submit" class="btn btn-light btn-lg">…</button> aka get_by_role("banner").get_by_role("button").filter(has_text=re.compile(r"^$"))
+    2) <button type="submit" data-bs-toggle="tooltip" title="Add to Wish List" class="btn btn-light btn-lg" formaction="http://localhost/opencart/index.php?route=account/wishlist.add&language=en-gb">…</button> aka get_by_title("Add to Wish List")
+    3) <button type="submit" data-bs-toggle="tooltip" class="btn btn-light btn-lg" title="Compare this Product" formaction="http://localhost/opencart/index.php?route=product/compare.add&language=en-gb">…</button> aka get_by_title("Compare this Product")
+
+Call log:
+  - waiting for locator("button[class='btn btn-light btn-lg']")
+
+📊 Test 'test_checkout_page' result: ❌ FAILED
+💾 Trace saved: reports/traces/test_checkout_page_trace.zip
+📸 Screenshot saved: reports/screenshots/test_checkout_page.png
+📎 Screenshot attached to Allure report
+🎥 Video attached to Allure report
+🧹 Closing browser context and stopping Playwright...
