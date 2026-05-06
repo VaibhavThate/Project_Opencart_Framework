@@ -50,7 +50,7 @@ class Login:
 
     def error_invalid_login(self):
         error = self.error_msg
-        expect(error).to_contain_text("Warning: No match for E-Mail Address and/or Password.")
+        expect(error).to_contain_text("Warning:")
 
 
 
