@@ -1,0 +1,11 @@
+🎯 Starting browser: chromium
+🎯 Headless mode: False (headed=True)
+🌐 Navigating to: http://localhost/opencart
+📹 Tracing enabled - capturing screenshots and actions
+4
+📊 Test 'test_checkout_page' result: ❌ FAILED
+💾 Trace saved: reports/traces/test_checkout_page_trace.zip
+📸 Screenshot saved: reports/screenshots/test_checkout_page.png
+📎 Screenshot attached to Allure report
+🎥 Video attached to Allure report
+🧹 Closing browser context and stopping Playwright...
