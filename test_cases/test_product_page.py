@@ -16,7 +16,7 @@ from config import Config
 from playwright.sync_api import expect
 import pytest
 
-@pytest.mark.regression
+
 def test_product_page(page):
     home_page = Homepage(page)
     login_page = Login(page)

@@ -15,8 +15,7 @@ from config import Config
 import pytest
 from playwright.sync_api import expect
 
-@pytest.mark.sanity
-@pytest.mark.regression
+
 def test_shopping_cart(page):
     home_page = Homepage(page)
     srp_page = SRP_page(page)

@@ -14,9 +14,13 @@ from pages.product_page import ProductPage
 from pages.shopping_cart_page import ShoppingCartPage
 from config import Config
 from playwright.sync_api import expect,Page
+from utilities.data_reader import read_json_data
 import pytest
+test_data = read_json_data("test_data/checkout_data.json")
 
-def test_checkout_page(page):
+@pytest.mark.sanity
+@pytest.mark.parametrize("data", test_data)
+def test_checkout_page(page,data):
     home_page = Homepage(page)
     login_page = Login(page)
     srp_page = SRP_page(page)
@@ -36,6 +40,12 @@ def test_checkout_page(page):
     login_page.click_login()
 
     expect(login_page.check_successful_login()).to_be_visible()
+
+    #from home page click on the item section
+    home_page.clear_item_cart(page)
+
+    home_page.click_item_cart()
+    expect(home_page.check_empty_cart_msg()).to_contain_text("Your shopping cart is empty!")
 
     for i in range(0,2):
         home_page.enter_search_box(Config.product_name[i])
@@ -74,7 +84,7 @@ def test_checkout_page(page):
     expect(check_out.error_msg_payment()).to_contain_text("Shipping method required!")
 
     check_out.add_comment_box()
-    check_out.check_product_price(Config.total_price)
+    check_out.check_product_price(data["product_1_price"],data["product_2_price"])
 
 
 

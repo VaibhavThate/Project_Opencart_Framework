@@ -1,7 +1,0 @@
-🎯 Starting browser: chromium
-🎯 Headless mode: False (headed=True)
-🌐 Navigating to: http://localhost/opencart
-📹 Tracing enabled - capturing screenshots and actions
-📊 Test 'test_login_excel[data1]' result: ✅ PASSED
-💾 Trace saved: reports/traces/test_login_excel[data1]_trace.zip
-🧹 Closing browser context and stopping Playwright...

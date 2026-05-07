@@ -13,7 +13,6 @@ from config import Config
 from playwright.sync_api import expect
 import pytest
 
-@pytest.mark.sanity
 def test_srp_page(page):
     home_page = Homepage(page)
     srp_page = SRP_page(page)

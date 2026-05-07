@@ -12,7 +12,7 @@ from pages.Homepage import Homepage
 from config import Config
 import pytest
 
-@pytest.mark.sanity
+
 # validate the login with valid email and password
 def test_valid_login(page):
     home_page = Homepage(page)
@@ -32,7 +32,7 @@ def test_valid_login(page):
     #validate the success message
     login_page.check_successful_login()
 
-@pytest.mark.sanity
+
 def test_invalid_login(page):
     login_page = Login(page)
     home_page = Homepage(page)

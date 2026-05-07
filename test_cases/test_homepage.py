@@ -13,7 +13,7 @@ from config import Config
 from pages.search_result_page import SRP_page
 import pytest
 
-@pytest.mark.sanity
+
 def test_my_account(page):
     #check my_account section to click on the my_account button
     home_page = Homepage(page)
@@ -22,7 +22,7 @@ def test_my_account(page):
     #check login button to click login button
     home_page.click_login()
 
-@pytest.mark.sanity
+
 def test_register(page):
     #check register button login
     home_page = Homepage(page)
@@ -30,7 +30,7 @@ def test_register(page):
     home_page.click_register()
 
 
-@pytest.mark.sanity
+
 def test_search_box(page):
     #entering the product name into the search box
     home_page = Homepage(page)
