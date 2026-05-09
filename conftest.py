@@ -82,7 +82,13 @@ def browser_context(request):
 
     # Launch the specified browser
     if browser_name.lower() == "chromium":
-        browser = playwright.chromium.launch(headless=not headed_flag)
+        browser = playwright.chromium.launch(
+            headless=not headed_flag,
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage"
+            ]
+        )
     elif browser_name.lower() == "firefox":
         browser = playwright.firefox.launch(headless=not headed_flag)
     elif browser_name.lower() == "webkit":
