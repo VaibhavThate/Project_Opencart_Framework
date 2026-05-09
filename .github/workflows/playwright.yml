@@ -33,10 +33,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest test_cases \
-          --browser chromium \
-          --base-url=http://localhost/opencart\
-          --alluredir=reports/allure-results
+          pytest test_cases --browser chromium --base-url=http://localhost/opencart --alluredir=reports/allure-results
 
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
