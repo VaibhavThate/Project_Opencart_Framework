@@ -1,0 +1,3 @@
+Starting browser: chromium
+Headless mode: True (headed=False)
+Closing browser context and stopping Playwright...
