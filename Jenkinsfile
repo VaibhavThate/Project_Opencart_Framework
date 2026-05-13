@@ -1,0 +1,88 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(
+            name: 'browser',
+            choices: ['chromium', 'firefox', 'webkit'],
+            description: 'Select Browser'
+        )
+    }
+
+    environment {
+        VENV = ".venv"
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'master',
+                url: 'https://github.com/VaibhavThate/Project_Opencart_Framework.git'
+            }
+        }
+
+        stage('Create Virtual Environment') {
+            steps {
+                bat """
+                python -m venv %VENV%
+                """
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat """
+                call %VENV%\\Scripts\\activate
+
+                pip install --upgrade pip
+
+                pip install -r requirement.txt
+                pip install pytest-xdist
+                pip install pytest-rerunfailures
+                pip install allure-pytest
+                pip install pandas
+
+                playwright install
+                """
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat """
+                call %VENV%\\Scripts\\activate
+
+                if exist reports\\allure-results rmdir /s /q reports\\allure-results
+
+                pytest test_cases --browser %browser% --alluredir=reports/allure-results -n=2 --reruns 2 --reruns-delay 3
+                """
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                allure(
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'reports/allure-results']]
+                )
+            }
+        }
+    }
+
+    post {
+
+        always {
+            archiveArtifacts artifacts: 'reports/**/*.*', fingerprint: true
+        }
+
+        success {
+            echo 'Build Successful'
+        }
+
+        failure {
+            echo 'Build Failed'
+        }
+    }
+}
